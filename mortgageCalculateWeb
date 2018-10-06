@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript">
+        window.onload = function () {
+            var wsConnection;
+        }
+
+            function calculateResult()
+            {
+                var p = parseFloat(document.getElementById("principalAmount").value);
+                var r = parseFloat(document.getElementById("rateAmount").value);
+                var n = parseFloat(document.getElementById("monthAmount").value); 
+                var m = String(p * r * (Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1.0));
+                //var m = ((p * r * (1.0 + r) ^ n) / ((1.0 + r) ^ n - 1.0));
+
+               mortgageResult.textContent = String(m);
+            }
+
+            function addMoreItems()
+            {     
+                var editableInput = document.createElement("input");
+                var saveDate = document.createElement("input");
+                saveDate.type = "date";
+                document.getElementById("div1").appendChild(editableInput);
+                document.getElementById("div2").appendChild(saveDate);
+            }
+        
+    </script>
+</head>
+<body>
+    <div align="left">
+        <div>
+            Mortgage Calculator
+        </div>
+        <div>Principal amount:
+            <input type="number" id="principalAmount" style="height: 30px; width:300px"/>
+        </div>
+        <div>Interest rate:
+            <input type="number" id="rateAmount" style="height: 30px; width: 300px" />
+        </div>
+        <div>Months:
+            <input type="number" id="monthAmount" style="height: 30px; width: 300px" />
+        </div>
+        <div>
+            Calculate:
+        </div>
+        <div>
+            Saveback date:
+            <input type="date" id="savebackDate" style="height: 30px; width:300px"/>
+        </div>
+        <div>
+            Amount:
+            <input type="number" id="amount" style="height: 30px; width:300px"/>
+        </div>
+        <div id="div1">
+        </div>
+        <div id="div2">
+        </div>
+        <div>
+            Add more items:
+            <button onclick="addMoreItems()" id="addMoreItems">Add more items</button>
+        </div>
+        <div>
+            <button onclick="calculateResult()" id="calculateResult">Calculate</button>
+        </div>
+        <div>
+            <textarea id="mortgageResult"></textarea>
+        </div>
+    </div>
+</body>
+</html>
